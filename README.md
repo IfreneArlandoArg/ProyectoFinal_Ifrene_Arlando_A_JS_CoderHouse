@@ -1,4 +1,4 @@
-# ProyectoFinal_JS_CoderHouse-IfreneArlandoA
+# ProyectoFinal_Ifrene_Arlando_A_JS_CoderHouse
 Entrega correspondiendo a la 3ra (final) entrega para el curso de javaScript CoderHouse.
 
 
