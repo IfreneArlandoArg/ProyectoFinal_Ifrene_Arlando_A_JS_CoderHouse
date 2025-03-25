@@ -59,3 +59,10 @@ Se definen el código JavaScript en un archivo .js, referenciándolo correctamen
 
 ## Legibilidad
 Los nombres de variables. funciones y objetos son significativos para el contexto, las instrucciones se escriben de forma legible y se emplean comentarios oportunos. El código fuente es ordenado en términos de declaración y secuencia.
+
+
+
+
+# Propusta de Resolución.
+
+Un programa qué emula (simula), un sistema de compra de indumentarias para hombre.
