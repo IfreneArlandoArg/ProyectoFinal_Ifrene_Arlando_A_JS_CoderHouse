@@ -1,0 +1,538 @@
+/* 🔹 General Styling */
+body {
+    background-color: #1c1c1c;
+    color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* 🔹 Ensures content takes up available space and pushes footer down */
+.container {
+    flex: 1;
+}
+
+/* 🔹 Navbar Styling - Fixed at the top */
+.navbar {
+    background-color: #121212;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    padding: 10px 0;
+}
+
+/* Adds margin to prevent content from hiding under the navbar */
+.navbar + .container {
+    margin-top: 80px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-brand img {
+    width: 40px;
+    height: auto;
+}
+
+/* 🔹 Responsive Navbar Images */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        width: 30px;
+    }
+}
+
+/* 🔹 Navbar Links */
+.navbar-nav .nav-link {
+    color: #f8f9fa !important;
+    transition: color 0.3s, transform 0.3s;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 15px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff !important;
+    transform: scale(1.1);
+}
+
+/* 🔹 Cart Icon Styling */
+#imgCarrito {
+    width: 30px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* 🔹 Cart Count Badge */
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.8rem;
+    padding: 3px 6px;
+    border-radius: 50%;
+}
+
+/* 🔹 Catalog Header */
+h2 {
+    text-align: center;
+    color: #f8f9fa;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* 🔹 Footer Styling */
+footer {
+    background-color: #121212;
+    color: #f8f9fa;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    margin-top: auto;
+    border-top: 2px solid #444;
+}
+
+/* 🔹 Social Media Icons in Footer */
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    margin: 0 10px;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.social-contact {
+    font-size: 1.5rem;
+    color: #f8f9fa;
+    transition: color 0.3s ease-in-out;
+}
+
+/* 🔹 Hover Effects */
+.social-contact:hover {
+    color: #007bff;
+    transform: scale(1.2);
+}
+
+/* 🔹 General Card Styling */
+.card {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    transition: transform 0.3s ease-in-out;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* 🔹 Product Images */
+.card-img-top {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 2px solid #444;
+}
+
+/* 🔹 Product Text */
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+}
+
+/* 🔹 Price Styling */
+.price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #f8f9fa;
+    margin-bottom: 10px;
+}
+
+/* 🔹 Add to Cart Button */
+.btn-add-cart {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-add-cart:hover {
+    background-color: #0056b3;
+}
+
+/* 🔹 DROPDOWN SELECTOR STYLING */
+.cantidad-select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #1c1c1c;
+    color: #f8f9fa;
+    text-align: center;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.cantidad-select:hover {
+    background-color: #292929;
+}
+
+.cantidad-select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* 🔹 Cart Pop-up (Fixed to the Right) */
+.cart-popup {
+    position: fixed;
+    right: 0;
+    top: 60px;
+    width: 350px;
+    background-color: #1c1c1c;
+    border-left: 3px solid #007bff;
+    padding: 15px;
+    border-radius: 8px 0 0 8px;
+    box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    z-index: 9999;
+    display: none;
+    max-height: 500px; /* Prevents the pop-up from expanding infinitely */
+    overflow: hidden; /* Ensures only items list is scrollable */
+}
+
+/* Show the pop-up */
+.cart-popup:not(.d-none) {
+    display: block;
+}
+
+/* 🔹 Scrollable Cart Items Wrapper */
+.cart-items-wrapper {
+    max-height: 250px; /* Limits cart item section height */
+    overflow-y: auto; /* Enables scrolling when there are many items */
+    margin-bottom: 10px; /* Space between items and total */
+    padding-right: 5px; /* Prevents horizontal scrollbar */
+}
+
+/* 🔹 Custom Scrollbar Styling */
+.cart-items-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cart-items-wrapper::-webkit-scrollbar-track {
+    background: #2a2a2a;
+    border-radius: 3px;
+}
+
+.cart-items-wrapper::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 3px;
+}
+
+.cart-items-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+}
+
+/* 🔹 Cart Header */
+.cart-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #444;
+}
+
+.cart-popup-header h5 {
+    color: #f8f9fa;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+#close-cart-popup {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #f8f9fa;
+}
+
+/* 🔹 Cart Items */
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #444;
+}
+
+/* 🔹 Cart Item Image */
+.cart-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* 🔹 Cart Item Details */
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-details h6 {
+    margin: 0;
+    font-size: 1rem;
+    color: #f8f9fa;
+}
+
+.cart-item-details p {
+    margin: 2px 0;
+    font-size: 0.9rem;
+    color: #b3b3b3;
+}
+
+.cart-price {
+    font-weight: bold;
+    color: #28a745;
+}
+
+/* 🔹 Remove Item Button */
+.remove-item {
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-item:hover {
+    background-color: #c82333;
+}
+
+/* 🔹 Cart Badge */
+#cart-icon {
+    cursor: pointer;
+    position: relative;
+}
+
+#cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.8rem;
+    padding: 3px 6px;
+    border-radius: 50%;
+    background-color: #dc3545;
+}
+
+/* 🔹 Checkout Button */
+#checkout-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+
+
+/*Checkout*/
+/* 🔹 Checkout Pop-up (Centered & Bigger) */
+.checkout-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    max-width: 90%;
+    background-color: #1c1c1c;
+    border: 3px solid #007bff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    z-index: 9999;
+    display: none;
+}
+
+/* Show the pop-up */
+.checkout-popup:not(.d-none) {
+    display: block;
+}
+
+/* 🔹 Checkout Pop-up Content */
+.checkout-popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.checkout-popup-content h5 {
+    color: #f8f9fa;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+/* 🔹 Checkout Form Styling */
+#checkout-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#checkout-form label {
+    color: #f8f9fa;
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+}
+
+#checkout-form input,
+#checkout-form select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    color: #f8f9fa;
+    font-size: 1rem;
+}
+
+#checkout-form input:focus,
+#checkout-form select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* 🔹 Installments Section */
+#installments-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* 🔹 Payment Buttons */
+#pay-btn, #close-checkout-popup {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#pay-btn {
+    background-color: #28a745;
+    border: none;
+    color: white;
+}
+
+#pay-btn:hover {
+    background-color: #218838;
+}
+
+#close-checkout-popup {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+}
+
+#close-checkout-popup:hover {
+    background-color: #c82333;
+}
+
+/* 🔹 Responsive Styling */
+@media (max-width: 576px) {
+    .checkout-popup {
+        width: 90%;
+    }
+}
+
+#checkout-total {
+    color: #f8f9fa ;
+    font-size: 1.2rem ;
+    font-weight: bold;
+}
+
+
+/*Alert popup*/
+/* 🔹 Alert Pop-up Styling (Positioned on the Left) */
+.alert-popup {
+    position: fixed;
+    left: 0;
+    top: 60px; /* Same as cart popup */
+    width: 350px;
+    background-color: #1c1c1c;
+    border-left: 3px solid #007bff; /* Blue border on the left */
+    padding: 15px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    z-index: 9999;
+    display: none;
+    max-height: 500px; /* Prevents expansion */
+    overflow: hidden; /* Ensures content is contained */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Show the alert */
+.alert-popup:not(.d-none) {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 🔹 Alert Text */
+#alert-popup-text {
+    color: #f8f9fa;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 🔹 OK Button */
+#alert-popup-ok-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#alert-popup-ok-btn:hover {
+    background-color: #0056b3;
+}
+
+/* 🔹 Fade-out Effect */
+.alert-popup.d-none {
+    opacity: 0;
+    transform: translateX(-100%);
+}

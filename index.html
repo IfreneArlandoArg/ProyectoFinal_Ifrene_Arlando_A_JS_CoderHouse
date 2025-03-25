@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indumentaria Hombre</title>
+    <script defer src="js/main.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a2e9583011.js" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/styles.css">
+    <link rel="icon" href="img/percha-de-ropa.png">
+</head>
+<body>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="img/percha-de-ropa.png" alt="percha">
+                <img src="img/verano.png" alt="">
+                <img src="img/zapato.png" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#product-container">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="cart-icon" class="nav-link position-relative" href="javascript:void(0);">
+                            <img id="imgCarrito" src="img/carrito-de-compras.png" alt="Carrito de compras">
+                            <span class="badge bg-danger" id="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Catalog -->
+    <div class="container mt-4">
+        <h2 class="text-center">Catálogo de Productos</h2>
+        <div class="row" id="product-container"></div>
+    </div>
+
+    <!-- Cart Pop-up -->
+    <div id="cart-popup" class="cart-popup d-none">
+        <div class="cart-popup-header">
+            <h5>Carrito de Compras</h5>
+            <span id="close-cart-popup">&times;</span>
+        </div>
+        <div class="cart-items-wrapper">
+            <div id="cart-items-list"></div> <!-- Inside a scrollable wrapper -->
+        </div>
+        <p id="cart-total">Total: $0</p>
+        <button id="checkout-btn" class="btn btn-success">Finalizar Compra</button>
+    </div>
+
+
+    <!-- CheckOut Pop-up  -->
+    <div id="checkout-popup" class="checkout-popup d-none">
+        <div class="checkout-popup-content">
+            <h5>Checkout</h5>
+            <form id="checkout-form">
+                
+                <input type="text" id="full-name" placeholder="Nombre Completo" required>
+                
+                
+                <input type="text" id="address" placeholder="Dirección de entrega" required>
+                
+                
+                <input type="number" id="phone" placeholder="Teléfono" required>
+                
+                <label>Método de Pago</label>
+                <select id="payment-method">
+                    <option value="debit">Tarjeta de Débito</option>
+                    <option value="credit">Tarjeta de Crédito</option>
+                </select>
+                
+                <div id="installments-section" class="d-none">
+                    <label>Cuotas</label>
+                    <select id="installments">
+                        <option value="1">1 Pago</option>
+                        <option value="3">3 Pagos</option>
+                        <option value="4">4 Pagos</option>
+                        <option value="5">5 Pagos</option>
+                        <option value="6">6 Pagos</option>
+                    </select>
+                </div>
+                
+                <p id="checkout-total"></p>
+
+                <button type="submit" id="pay-btn" class="btn btn-success">Pagar</button>
+                <button type="button" id="close-checkout-popup" class="btn btn-danger">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+  
+<!-- Alert Pop-up -->
+<div id="alert-popup" class="alert-popup d-none shadow-lg">
+    <p id="alert-popup-text"></p>
+    <button class="btn btn-primary w-100 mt-2" id="alert-popup-ok-btn">OK</button>
+</div>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 Indumentaria Hombre. Todos los derechos reservados.</p>
+        <div class="social-icons">
+            <a href="https://twitter.com" target="_blank"><i class="social-contact fa-brands fa-x-twitter"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="social-contact fa-brands fa-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="social-contact fa-brands fa-instagram"></i></a>
+            <a href="mailto:info@indumentariahombre.com" target="_blank"><i class="social-contact fa-solid fa-envelope"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>
