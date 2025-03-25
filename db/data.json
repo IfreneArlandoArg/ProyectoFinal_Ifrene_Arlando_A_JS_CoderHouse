@@ -1,0 +1,162 @@
+[
+    {
+        "id": 1,
+        "name": "Camisa Formal",
+        "description": "Camisa blanca de algodón premium para ocasiones especiales.",
+        "size": ["S", "M", "L", "XL", "XXL"],
+        "price": 49990,
+        "image": "https://images.unsplash.com/photo-1603252109303-2751441dd157?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3"
+    },
+    {
+        "id": 2,
+        "name": "Pantalón de Vestir",
+        "description": "Elegante y cómodo pantalón beige, ideal para la oficina o eventos.",
+        "size": ["S", "M", "L", "XL", "XXL"],
+        "price": 59990,
+        "image": "https://hips.hearstapps.com/hmg-prod/images/mejores-pantalones-hombre-primavera-octobre-editions-1648213151.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Zapatos de Cuero",
+        "description": "Estilo y durabilidad en un solo calzado (marrón).",
+        "size": [30, 35, 40.5, 42, 44],
+        "price": 79990,
+        "image": "https://cdn.shopify.com/s/files/1/0519/8302/4306/files/Zoom-shoes-Blog-for-7-reasons-to-love-genuine-leather-shoes-for-men-section-image-03_480x480.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Camiseta Polo",
+        "description": "Camiseta polo azul marino, perfecta para un look casual y elegante.",
+        "size": ["S", "M", "L", "XL", "XXL"],
+        "price": 35990,
+        "image": "https://ss261.liverpool.com.mx/xl/1138513340.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Jeans Slim Fit",
+        "description": "Vaqueros ajustados azul oscuro con un diseño moderno.",
+        "size": ["S", "M", "L", "XL", "XXL"],
+        "price": 64990,
+        "image": "https://images.unsplash.com/photo-1714729382642-59f19c74440e?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        "id": 6,
+        "name": "Blazer Negro",
+        "description": "Blazer negro de corte elegante, ideal para ocasiones formales.",
+        "size": ["S", "M", "L", "XL", "XXL"],
+        "price": 129990,
+        "image": "https://hips.hearstapps.com/hmg-prod/images/sean-opry-is-seen-attending-boss-during-mens-new-york-news-photo-1712071610.jpg?crop=0.669xw:1.00xh;0.194xw,0&resize=640:*"
+    },
+    {
+        "id": 7,
+        "name": "Sweater de Lana",
+        "description": "Sweater de lana beige, perfecto para el invierno.",
+        "size": ["S", "M", "L", "XL", "XXL"],
+        "price": 69990,
+        "image": "https://www.bananarepublic.cl/media/catalog/product/b/r/br568513_br01_1_1.jpg?optimize=medium&bg-color=255,255,255&height=1305&width=960&canvas=960:1305"
+    },
+    {
+        "id": 8,
+        "name": "Zapatillas Deportivas",
+        "description": "Zapatillas deportivas blancas cómodas y resistentes.",
+        "size": [39, 40, 41, 42, 43, 44],
+        "price": 99990,
+        "image": "https://images.unsplash.com/photo-1738166936510-2c3e45422945?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        "id": 9,
+        "name": "Chaqueta de Cuero",
+        "description": "Chaqueta de cuero negra para un look moderno y audaz.",
+        "size": ["S", "M", "L", "XL"],
+        "price": 149990,
+        "image": "https://acdn-us.mitiendanube.com/stores/001/344/226/products/dsc012471-704fd877988630a84e16265435413275-480-0.jpg"
+    },
+    {
+        "id": 10,
+        "name": "Camisa de Lino",
+        "description": "Camisa de lino beige para un estilo fresco y cómodo.",
+        "size": ["S", "M", "L", "XL", "XXL"],
+        "price": 45990,
+        "image": "https://i.pinimg.com/474x/39/55/9c/39559c576b171c7d1ece530bb9c25868.jpg"
+    },
+    {
+        "id": 11,
+        "name": "Pantalón Cargo",
+        "description": "Pantalón cargo verde oliva con múltiples bolsillos.",
+        "size": ["S", "M", "L", "XL", "XXL"],
+        "price": 52990,
+        "image": "https://i.pinimg.com/736x/9a/5c/3e/9a5c3e21bf3030f44366a2780559ed3c.jpg"
+    },
+    {
+        "id": 12,
+        "name": "Botines de Cuero",
+        "description": "Botines de cuero negro de alta calidad.",
+        "size": [39, 40, 41, 42, 43, 44],
+        "price": 129990,
+        "image": "https://dcuero.com.ec/wp-content/uploads/2022/01/IMG_1010.jpg"
+    },
+    {
+        "id": 13,
+        "name": "Abrigo de Invierno",
+        "description": "Abrigo largo negro con forro térmico.",
+        "size": ["S", "M", "L", "XL"],
+        "price": 179990,
+        "image": "https://m.media-amazon.com/images/I/5166AmNdPwL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+        "id": 14,
+        "name": "Camiseta Básica",
+        "description": "Camiseta blanca básica de algodón suave.",
+        "size": ["S", "M", "L", "XL", "XXL"],
+        "price": 19990,
+        "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        "id": 15,
+        "name": "Pantalón Jogger",
+        "description": "Pantalón jogger gris ideal para un look relajado.",
+        "size": ["S", "M", "L", "XL", "XXL"],
+        "price": 39990,
+        "image": "https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/a748464ac9135a211430a4e293fe9377.jpg?imageMogr2/auto-orient%7CimageView2/2/w/800/q/70/format/webp"
+    },
+    {
+        "id": 16,
+        "name": "Cinturón de Cuero",
+        "description": "Cinturón de cuero negro con hebilla metálica.",
+        "size": ["Único"],
+        "price": 29990,
+        "image": "https://images.unsplash.com/photo-1664285612706-b32633c95820?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        "id": 17,
+        "name": "Chaleco Acolchado",
+        "description": "Chaleco acolchado negro para días fríos.",
+        "size": ["S", "M", "L", "XL"],
+        "price": 89990,
+        "image": "https://cdn.laredoute.com/cdn-cgi/image/width=400,height=400,fit=pad,dpr=1/products/6/b/0/6b05def1ff05c101cb6dd853309a407d.jpg"
+    },
+    {
+        "id": 18,
+        "name": "Mocasines",
+        "description": "Mocasines marrones elegantes y cómodos.",
+        "size": [39, 40, 41, 42, 43, 44],
+        "price": 84990,
+        "image": "https://images.unsplash.com/photo-1616243344308-04fb7e776cfe?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        "id": 19,
+        "name": "Bufanda de Lana",
+        "description": "Bufanda de lana gris para mayor calidez.",
+        "size": ["Único"],
+        "price": 19990,
+        "image": "https://realfabrica.com/cdn/shop/files/Bufanda-de-Lana-Gris-Perla-Cadiz.jpg?v=1713785487"
+    },
+    {
+        "id": 20,
+        "name": "Guantes de Cuero",
+        "description": "Guantes de cuero negro con interior térmico.",
+        "size": ["S", "M", "L"],
+        "price": 34990,
+        "image": "https://http2.mlstatic.com/D_NQ_NP_689487-MLA69472407497_052023-O.webp"
+    }
+]
