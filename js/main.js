@@ -17,7 +17,7 @@ async function getData() {
         
     } catch (error) {
         //sweet alert...
-        alert(`${error}`);
+        showSweetAlert("error","Oops...",`${error}`);
         return null;
     }
     
@@ -31,6 +31,7 @@ getData().then(data => {
     }
     else{
         //sweet alert....No data found
+        showSweetAlert("error","Oops...","No data found!");
 
     }
 })
@@ -38,6 +39,77 @@ getData().then(data => {
 
 
 //functions...
+
+//Sweet Alert...
+
+function showSweetAlert(icon, title, text){
+
+return    Swal.fire({
+        title: title,
+        icon: icon,
+        text: text,
+        theme: "dark",
+        draggable: true
+      });
+}
+
+//Generate invoice pdf
+function generateInvoicePDF(data) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const { InfoCliente, Cart } = data;
+
+    const fecha = new Date().toLocaleDateString();
+    const facturaId = "FAC-" + Math.floor(100000 + Math.random() * 900000);
+
+    doc.setFontSize(16);
+    doc.text("Factura de Compra - Pago Confirmado", 20, 20);
+
+    doc.setFontSize(10);
+    doc.text(`Fecha: ${fecha}`, 20, 28);
+    doc.text(`N° Factura: ${facturaId}`, 150, 28);
+
+    doc.setFontSize(12);
+    doc.text(`Cliente: ${InfoCliente.name}`, 20, 40);
+    doc.text(`Dirección: ${InfoCliente.address}`, 20, 48);
+    doc.text(`Teléfono: ${InfoCliente.phone}`, 20, 56);
+    doc.text(`Método de Pago: ${InfoCliente.paymentMethod === "credit" ? "Tarjeta de Crédito" : "Tarjeta de Débito"}`, 20, 64);
+    
+    if (InfoCliente.paymentMethod === "credit") {
+        doc.text(`Cuotas: ${InfoCliente.installments}`, 20, 72);
+    }
+
+    let y = InfoCliente.paymentMethod === "credit" ? 88 : 80;
+    doc.setFontSize(13);
+    doc.text("Detalle de Productos", 20, y);
+
+    y += 10;
+    doc.setFontSize(11);
+    Cart.forEach((item, index) => {
+        doc.text(`${index + 1}. ${item.name} | Talle: ${item.size} | Cant: ${item.quantity} | Subtotal: $${item.price * item.quantity}`, 20, y);
+        y += 8;
+    });
+
+    const total = Cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    y += 10;
+    doc.setFontSize(14);
+    doc.text(`TOTAL PAGADO: $${total}`, 20, y);
+
+    y += 15;
+    doc.setFontSize(11);
+    doc.text("Gracias por tu compra. Esta factura confirma que el pago fue recibido con éxito.", 20, y);
+
+    const blob = doc.output("blob");
+    const url = URL.createObjectURL(blob);
+
+    return { url, facturaId };
+}
+
+
+
+
+
 //Generate Product Cards
 function generateProductCard(product) {
     const productCard = document.createElement("div");
@@ -247,9 +319,19 @@ checkoutForm.addEventListener("submit", function (event) {
     cleanCheckoutInputs();
 
     localStorage.setItem("compra", JSON.stringify(purchaseData));
-    
-    alertPopupText.innerText = "Compra realizada con éxito! ✅";
-    alertPopup.classList.remove("d-none");
+
+    const { url: pdfUrl, facturaId } = generateInvoicePDF(purchaseData);
+
+    Swal.fire({
+     icon: "success",
+     title: "Pago completado!",
+     text: "Compra realizada con éxito!",
+     theme: "dark",
+     draggable: true,
+     footer: `<a href="${pdfUrl}" download="factura_${facturaId}.pdf" target="_blank">Descargar factura ${facturaId}</a>`
+    });
+
+
     
     cart = [];
     updateCartDisplay();
@@ -283,8 +365,7 @@ function updateCheckoutTotal() {
 checkoutBtn.addEventListener("click", function () {
     if (cart.length === 0) {
       
-        alertPopupText.innerText = "El carrito está vacío. Agrega productos antes de proceder al pago.";
-        alertPopup.classList.remove("d-none");
+        showSweetAlert("error","Carrito vacío!","Agregar productos antes de proceder al pago.");
         return;
     }
     
@@ -309,15 +390,3 @@ paymentMethod.addEventListener("change", function () {
 installmentsSelect.addEventListener("change", updateCheckoutTotal);
 
 
-//alert pop-up
-const alertPopup = document.getElementById("alert-popup");
-const alertPopupText = document.getElementById("alert-popup-text");
-const alertPopupOkBtn = document.getElementById("alert-popup-ok-btn");
-
-//Closes alert pop-up
-
-alertPopupOkBtn.addEventListener("click", () => {
-    
-    alertPopup.classList.add("d-none");
-
-});
