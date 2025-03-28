@@ -419,7 +419,7 @@ checkoutForm.addEventListener("submit", function (event) {
             Swal.fire({
                 icon: "success",
                 title: "Compra completa!",
-                text: `Factura enviada exitosamente al ${customerInfo.email}!`,
+                text: `Factura enviada exitosamente al ${customerInfo.email}`,
                 theme: "dark",
                 footer: `<a href="${url}" download="factura_${facturaId}.pdf" target="_blank">Descargar factura ${facturaId}</a>`,
                 draggable: true
