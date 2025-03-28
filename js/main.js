@@ -103,7 +103,8 @@ function generateInvoicePDF(data) {
     const blob = doc.output("blob");
     const url = URL.createObjectURL(blob);
 
-    return { url, facturaId };
+    
+    return  { url, facturaId };
 }
 
 
@@ -270,6 +271,8 @@ const payBtn = document.getElementById("pay-btn");
 const textBoxPhone = document.getElementById("phone");
 const textBoxFullName = document.getElementById("full-name");
 const textBoxAddress = document.getElementById("address");
+const textBoxEmail = document.getElementById("email");
+
 
 
 
@@ -292,6 +295,7 @@ function cleanCheckoutInputs() {
     textBoxAddress.value = "";
     textBoxFullName.value = "";
     textBoxPhone.value = "";
+    textBoxEmail.value = "";
     paymentMethod.value = "debit";
     installmentsSelect.value = "1";
 
@@ -307,6 +311,7 @@ checkoutForm.addEventListener("submit", function (event) {
         name: textBoxFullName.value,
         address: textBoxAddress.value,
         phone: textBoxPhone.value,
+        email: textBoxEmail.value,
         paymentMethod: paymentMethod.value,
         installments: paymentMethod.value === "credit" ? parseInt(installmentsSelect.value) : 1
     };
@@ -320,23 +325,89 @@ checkoutForm.addEventListener("submit", function (event) {
 
     localStorage.setItem("compra", JSON.stringify(purchaseData));
 
-    const { url: pdfUrl, facturaId } = generateInvoicePDF(purchaseData);
+    
+   
+   const { url, facturaId} = generateInvoicePDF(purchaseData);
 
-    Swal.fire({
-     icon: "success",
-     title: "Pago completado!",
-     text: "Compra realizada con éxito!",
-     theme: "dark",
-     draggable: true,
-     footer: `<a href="${pdfUrl}" download="factura_${facturaId}.pdf" target="_blank">Descargar factura ${facturaId}</a>`
-    });
-
+      // 🎯 Fill the hidden form dynamically
+    document.getElementById("facturaID").value = facturaId;
+    document.getElementById("to_name").value = customerInfo.name;
+    document.getElementById("to_email").value = customerInfo.email;
+    document.getElementById("total").value = `${cart.reduce((acc, item) => acc + item.price * item.quantity, 0)}`;
+    document.getElementById("orderDate").value = `${new Date().toLocaleDateString()}`;
 
     
+    document.getElementById("content").value = getStringProductsFromCart(cart);
+
+    
+
+    // 📧 Send form with EmailJS
+    const emailForm = document.getElementById("emailForm");
+
+    
+    emailjs.sendForm("service_b8k2mxn", "template_migk0l1", emailForm)
+        .then(() => {
+            Swal.fire({
+                icon: "success",
+                title: "Compra completa!",
+                text: `Factura enviada exitosamente al ${customerInfo.email}!`,
+                theme: "dark",
+                footer: `<a href="${url}" download="factura_${facturaId}.pdf" target="_blank">Descargar factura ${facturaId}</a>`,
+                draggable: true
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+            
+            Swal.fire({
+                icon: "warning",
+                title: "Compra completa!",
+                html: `<p>No se pudo enviar la factura por email</p> 
+                       <p>${customerInfo.email}</p> 
+                       <p>Se puede descargar desde el enlace de descarga de factura.<br>👇🏽</p>
+                       <a href="${url}" download="factura_${facturaId}.pdf" target="_blank">Descargar factura ${facturaId}</a>`,
+                theme: "dark",
+                draggable: true
+            });
+        });
+
+
+
+
+    cleanEmailForm();
     cart = [];
     updateCartDisplay();
     checkoutPopup.classList.add("d-none");
 });
+
+function getStringProductsFromCart(pCart){
+    
+    let productsString = '\n';
+    
+    
+    pCart.forEach((item, index) => {
+        productsString += `${index + 1}. ${item.name} | Talle: ${item.size} | Cant: ${item.quantity} | Subtotal: $ ${item.price * item.quantity}\n`;
+        
+    });
+
+
+    return productsString; 
+
+}
+
+function cleanEmailForm(){
+    document.getElementById("facturaID").value = "";
+    document.getElementById("to_name").value = "";
+    document.getElementById("to_email").value = "";
+    document.getElementById("total").value = "";
+    document.getElementById("orderDate").value = "";
+
+    
+    document.getElementById("content").value = "";
+}
+
+
+
 
 
 

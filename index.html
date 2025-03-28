@@ -8,6 +8,13 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
+    <!--Email js-->
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script> emailjs.init('GZlAvopjRetCRGS2z');  </script>
+
+
+
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -68,6 +75,17 @@
         <button id="checkout-btn" class="btn btn-success">Finalizar Compra</button>
     </div>
 
+    <form id="emailForm" class="d-none">
+        <input type="hidden" name="facturaID" id="facturaID">
+        <input type="hidden" name="to_name" id="to_name">
+        <input type="hidden" name="to_email" id="to_email">
+        <input type="hidden" name="content" id="content">
+        <input type="hidden" name="total" id="total">
+        <input type="hidden" name="orderDate" id="orderDate">
+        
+    </form>
+    
+
 
     <!-- CheckOut Pop-up  -->
     <div id="checkout-popup" class="checkout-popup d-none">
@@ -82,6 +100,9 @@
                 
                 
                 <input type="number" id="phone" placeholder="Teléfono" required>
+
+                <input type="email" id="email" placeholder="Email" required>
+
                 
                 <label>Método de Pago</label>
                 <select id="payment-method">
