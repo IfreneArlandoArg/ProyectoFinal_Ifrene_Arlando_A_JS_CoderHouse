@@ -156,7 +156,7 @@ function addToCart(product) {
     updateCartDisplay();
 }
 
-// Update Cart Display
+// Update Cart Display with Increment and Decrement Buttons
 function updateCartDisplay() {
     cartItemsList.innerHTML = "";
 
@@ -171,7 +171,11 @@ function updateCartDisplay() {
             <img src="${item.image}" alt="${item.name}" class="cart-item-img">
             <div class="cart-item-details">
                 <h6>${item.name}</h6>
-                <p>${item.size} | Cantidad: ${item.quantity}</p>
+                <p>${item.size} | Cantidad: 
+                    <button class="btn btn-sm btn-secondary decrease-item" data-index="${index}">-</button>
+                    ${item.quantity}
+                    <button class="btn btn-sm btn-secondary increase-item" data-index="${index}">+</button>
+                </p>
                 <p class="cart-price">$${item.price * item.quantity}</p>
                 <button class="btn btn-danger btn-sm remove-item" data-index="${index}">Eliminar</button>
             </div>
@@ -182,8 +186,73 @@ function updateCartDisplay() {
 
     cartTotal.innerHTML = `Total: $${total}`;
     document.getElementById("cart-count").innerText = cart.length;
+
+    // Agregar botón "Vaciar Carrito" si hay productos
+    if (cart.length > 0) {
+        if (!document.getElementById("empty-cart-button")) {
+            const emptyCartBtn = document.createElement("button");
+            emptyCartBtn.id = "empty-cart-button";
+            emptyCartBtn.className = "btn btn-warning mt-2";
+            emptyCartBtn.innerText = "Vaciar Carrito";
+            emptyCartBtn.addEventListener("click", emptyCart);
+            cartPopup.appendChild(emptyCartBtn);
+        }
+    } else {
+        const emptyCartBtn = document.getElementById("empty-cart-button");
+        if (emptyCartBtn) emptyCartBtn.remove();
+    }
 }
 
+// Event listener for cart actions
+document.addEventListener("click", function (event) {
+   
+
+    if (event.target.classList.contains("remove-item")) {
+        const index = event.target.getAttribute("data-index");
+        cart.splice(index, 1);
+        updateCartDisplay();
+    }
+
+    if (event.target.classList.contains("increase-item")) {
+        const index = event.target.getAttribute("data-index");
+        cart[index].quantity++;
+        updateCartDisplay();
+    }
+
+    if (event.target.classList.contains("decrease-item")) {
+        const index = event.target.getAttribute("data-index");
+        if (cart[index].quantity > 1) {
+            cart[index].quantity--;
+        } else {
+            cart.splice(index, 1);
+        }
+        updateCartDisplay();
+    }
+});
+
+// Vaciar carrito
+function emptyCart() {
+    cart = [];
+    updateCartDisplay();
+}
+
+// Mostrar/Ocultar el carrito
+cartIcon.addEventListener("click", () => {
+    cartPopup.classList.toggle("show");
+});
+
+// Cerrar el carrito
+closeCartPopup.addEventListener("click", () => {
+    cartPopup.classList.remove("show");
+});
+
+// Cargar productos al inicio
+document.addEventListener("DOMContentLoaded", () => {
+    getData();
+    updateCartDisplay();
+});
+
+//fin
 
 
 
