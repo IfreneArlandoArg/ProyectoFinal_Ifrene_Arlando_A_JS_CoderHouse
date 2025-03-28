@@ -419,9 +419,11 @@ checkoutForm.addEventListener("submit", function (event) {
             Swal.fire({
                 icon: "success",
                 title: "Compra completa!",
-                text: `Factura enviada exitosamente al ${customerInfo.email}`,
+                html: `<p>Factura enviada exitosamente al ${customerInfo.email}</p>
+                       <p>Se puede descargar desde el enlace de descarga de factura.<br>👇🏽</p>
+                       <a href="${url}" download="factura_${facturaId}.pdf" target="_blank"><strong>Descargar factura ${facturaId}</strong></a>`,
                 theme: "dark",
-                footer: `<a href="${url}" download="factura_${facturaId}.pdf" target="_blank">Descargar factura ${facturaId}</a>`,
+                footer: `<a href="#" target="_blank" >© ${new Date().getFullYear()} Indumentaria Hombre </a>`,
                 draggable: true
             });
         })
@@ -434,8 +436,9 @@ checkoutForm.addEventListener("submit", function (event) {
                 html: `<p>No se pudo enviar la factura por email</p> 
                        <p>${customerInfo.email}</p> 
                        <p>Se puede descargar desde el enlace de descarga de factura.<br>👇🏽</p>
-                       <a href="${url}" download="factura_${facturaId}.pdf" target="_blank">Descargar factura ${facturaId}</a>`,
+                       <a href="${url}" download="factura_${facturaId}.pdf" target="_blank"><strong>Descargar factura ${facturaId}</strong></a>`,
                 theme: "dark",
+                footer: `<a href="#" target="_blank" >© ${new Date().getFullYear()} Indumentaria Hombre </a>`,
                 draggable: true
             });
         });
