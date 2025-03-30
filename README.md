@@ -66,3 +66,9 @@ Los nombres de variables. funciones y objetos son significativos para el context
 # Propusta de Resolución.
 
 Un programa qué emula (simula), un sistema de compra de indumentarias para hombre.
+
+* UI Agregar + ver productos en Carrito => Link Youtube short DEMO ⬇️.
+
+    [![Link Youtube Demo](https://img.youtube.com/vi/q2SMBEnTXMA/maxresdefault.jpg)](https://youtu.be/q2SMBEnTXMA)
+
+    
